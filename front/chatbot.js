@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const API_BASE = "http://127.0.0.1:8000";
   const MODEL = "llama3.2";
 
-  // ---------- utils ----------
   const escapeHtml = (str = "") =>
     str
       .replaceAll("&", "&amp;")
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
       .replaceAll('"', "&quot;")
       .replaceAll("'", "&#039;");
 
-  // format : soit texte normal, soit liste si le texte ressemble à une liste
   function formatAnswer(raw = "") {
     const safe = escapeHtml(raw).trim();
     if (!safe) return `<div>(pas de réponse)</div>`;
@@ -35,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     output.scrollTop = output.scrollHeight;
   }
 
-  // ---------- UI messages ----------
   function addBubble(side, text, { isHtml = false } = {}) {
     const row = document.createElement("div");
     row.className = `chat-row ${side}`;
@@ -76,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btn) btn.disabled = loading;
   }
 
-  // ---------- API ----------
   async function fetchBotAnswer(message) {
     const res = await fetch(`${API_BASE}/api/chat`, {
       method: "POST",
@@ -89,14 +85,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return data.answer || "";
   }
 
-  // ---------- events ----------
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const msg = input.value.trim();
     if (!msg) return;
-
-    // Message utilisateur (sans "Vous")
+    
     addBubble("right", msg);
     input.value = "";
 
@@ -107,7 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const answer = await fetchBotAnswer(msg);
       removeTyping();
 
-      // Réponse IA (sans "IA")
       addBubble("left", answer);
     } catch (err) {
       console.error(err);
