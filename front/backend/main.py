@@ -6,23 +6,19 @@ import httpx
 
 from tools import get_titles, get_filters
 
-# Types autorisés
 TitleType = Literal["movie", "series"]
 OrderType = Literal["asc", "desc"]
 
-# 🔹 Création de l'app FastAPI
 app = FastAPI(title="IA Bot API")
 
-# 🔹 CORS (pour que le front puisse appeler l'API)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # OK en développement
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# 🔹 Endpoint : récupérer films / séries
 @app.get("/api/titles")
 async def api_titles(
     type: TitleType = Query(..., description="movie ou series"),
@@ -39,7 +35,6 @@ async def api_titles(
         order=order,
     )
 
-# 🔹 Endpoint : récupérer les filtres
 @app.get("/api/filters")
 async def api_filters(
     type: TitleType = Query(..., description="movie ou series"),
@@ -52,13 +47,12 @@ def ping():
 
 class ChatRequest(BaseModel):
     message: str
-    model: str | None = "llama3.2"   # tu peux changer plus tard
+    model: str | None = "llama3.2"  
 
 
 @app.post("/api/chat")
 async def api_chat(payload: ChatRequest):
 
-    # Instructions données à l'IA
     prompt = f"""
 Tu es un assistant de recommandation de films/séries.
 
@@ -78,7 +72,6 @@ Message utilisateur :
 {payload.message}
 """
 
-    # Appel à Ollama (IA locale)
     async with httpx.AsyncClient(timeout=60) as client:
         response = await client.post(
             "http://127.0.0.1:11434/api/generate",
@@ -91,7 +84,6 @@ Message utilisateur :
 
     data = response.json()
 
-    # On renvoie uniquement la réponse texte de l'IA
     return {
         "answer": data.get("response", "").strip()
     }
