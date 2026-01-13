@@ -12,19 +12,15 @@ from bs4 import BeautifulSoup
 
 TitleType = Literal["movie", "series"]
 
-# ----------------------------
-# CONFIG
-# ----------------------------
 
 SOURCES: dict[TitleType, str] = {
-    "movie": "https://www.themoviedb.org/movie",   # TODO
-    "series": "https://www.themoviedb.org/tv",  # TODO
+    "movie": "https://www.themoviedb.org/movie",  
+    "series": "https://www.themoviedb.org/tv",  
 }
 
-# sécurité: n'autoriser que certains domaines
 ALLOWED_DOMAINS = {"www.themoviedb.org"}
 
-# cache local (pas une DB): 1h
+
 CACHE_DIR = Path("cache")
 CACHE_DIR.mkdir(exist_ok=True)
 CACHE_TTL_SECONDS = 3600
@@ -37,7 +33,7 @@ class TitleItem:
     genre: Optional[str] = None
     country: Optional[str] = None
     poster_url: str = ""
-    url: str = ""  # lien vers la page détail (optionnel)
+    url: str = ""
 
 
 def _domain_from_url(url: str) -> str:
@@ -95,10 +91,7 @@ async def scrape_titles(type_: TitleType) -> list[TitleItem]:
 
     items: list[TitleItem] = []
 
-    # ----------------------------
-    # TODO: ADAPTER ICI
-    # ----------------------------
-    # Exemple générique: chaque "card" contient titre + image + metadata
+    
     for card in soup.select("div.card"):
         link = card.select_one("a.image")
         img = card.select_one("img")
@@ -137,21 +130,18 @@ async def scrape_details(detail_url: str) -> dict:
         r.raise_for_status()
 
     soup = BeautifulSoup(r.text, "lxml")
-
-    # Année (extrait d'un header)
+    
     header = soup.select_one("h2")
     header_text = _safe_text(header)
 
     m = re.search(r"\b(19\d{2}|20\d{2})\b", header_text)
     year = int(m.group(1)) if m else None
 
-    # Genres (liens /genre)
     genres = [a.get_text(strip=True) for a in soup.select('a[href*="/genre/"]')]
     genre = genres[0] if genres else None
 
     
-    country = None  # Pays: pas fiable sur TMDb via scraping HTML -> on laisse None
-
+    country = None  
     return {"year": year, "genre": genre, "country": country}
 
 
@@ -227,7 +217,7 @@ async def get_titles(
 
 
 async def get_filters(type_: TitleType) -> dict:
-    # on récupère les titres enrichis (via get_titles)
+    
     data = await get_titles(type_)
     items = [TitleItem(**d) for d in data["items"]]
 
