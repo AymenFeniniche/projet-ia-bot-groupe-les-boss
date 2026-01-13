@@ -65,26 +65,26 @@ async function initCatalogPage(type) {
   const container = document.querySelector(containerSelector);
   if (!container) return;
 
-  // ✅ Pays : TMDb scraping -> non dispo. On désactive le filtre.
+ 
   const countrySelect = qs("filterCountry");
   if (countrySelect) {
     countrySelect.disabled = true;
     countrySelect.innerHTML = `<option value="">Pays (non disponible)</option>`;
   }
 
-  // 1) Charger filtres
+
   const filters = await fetchJSON(`${API_BASE}/api/filters?type=${type}`);
   if (qs("filterGenre")) fillSelect(qs("filterGenre"), filters.genres || [], "Genre (tous)");
   if (qs("filterYear")) fillSelect(qs("filterYear"), filters.years || [], "Année (toutes)");
 
-  // 2) Recharge la liste
+ 
   async function refresh() {
     const url = buildTitlesUrl(type);
     const data = await fetchJSON(url);
     renderCards(container, data.items || [], type === "series" ? "Série" : "Film");
   }
 
-  // 3) Events
+  
   ["filterGenre", "filterYear", "sortOrder"].forEach((id) => {
     const el = qs(id);
     if (el) el.addEventListener("change", refresh);
@@ -110,7 +110,6 @@ async function initCatalogPage(type) {
     });
   }
 
-  // 4) Premier chargement
   await refresh();
 }
 
