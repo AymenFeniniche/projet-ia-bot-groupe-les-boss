@@ -1,58 +1,39 @@
-const btnBurger = document.querySelector('#menu-burger');
-const nav = document.querySelector('.navigation');
-const linkNav = document.querySelectorAll('.navigation a');
-const header   = document.querySelector('header');
-const sections = document.querySelectorAll('section');
+document.addEventListener("DOMContentLoaded", () => {
+  // Burger menu
+  const btnBurger = document.querySelector("#menu-burger");
+  const nav = document.querySelector(".navigation");
+  const header = document.querySelector("header");
 
-if (btnBurger) {
-    btnBurger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        btnBurger.classList.toggle('bx-x');
-        if (window.scrollY === 0) {
-            header.classList.toggle('active');
-        }
+  if (btnBurger && nav) {
+    btnBurger.addEventListener("click", () => {
+      nav.classList.toggle("active");
+      btnBurger.classList.toggle("bx-x");
+      if (header && window.scrollY === 0) header.classList.toggle("active");
     });
-}
 
-linkNav.forEach(link => {
-    link.addEventListener('click', () => {
-        if (nav) nav.classList.remove('active');
-        if (btnBurger) btnBurger.classList.remove('bx-x');
+    // Fermer le menu quand on clique sur un lien
+    document.querySelectorAll(".navigation a").forEach((a) => {
+      a.addEventListener("click", () => {
+        nav.classList.remove("active");
+        btnBurger.classList.remove("bx-x");
+      });
     });
+  }
+
+  // Header style au scroll
+  if (header) {
+    const onScroll = () => header.classList.toggle("active", window.scrollY > 0);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+  }
+
+  // Swiper seulement si présent
+  if (typeof Swiper !== "undefined" && document.querySelector(".home")) {
+    new Swiper(".home", {
+      spaceBetween: 50,
+      centeredSlides: true,
+      autoplay: { delay: 5000, disableOnInteraction: false },
+      pagination: { el: ".swiper-pagination", clickable: true },
+    });
+  }
 });
-
-window.addEventListener('scroll', ()=> {
-  header.classList.toggle('active', window.scrollY > 0)
-});
-
-//const scrollActive = () => {
-    //sections.forEach(section => {
-        //let top = window.scrollY;
-        //let offset = section.offsetTop - 500;
-        //let height = section.offsetHeight;
-        //let id = section.getAttribute('id');
-  
-        //if (top >= offset && top < offset + height) {
-        //    linkNav.forEach(link => link.classList.remove('link-active'));
-        //    const activeLink = document.querySelector(`.navigation a[href*="${id}"]`);
-        //    if (activeLink) activeLink.classList.add('link-active');
-       // }
-    //})
- // }
-  
- // window.addEventListener('scroll', scrollActive)
-
-
-var swiper = new Swiper('.home', {
-    spaceBetween: 50,
-    centeredSlides: true,
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-});
-

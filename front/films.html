@@ -6,10 +6,15 @@
     <!-- boxicon -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    
 </head>
+
+<script src="app.js"></script>
+<script src="catalog.js"></script>
+
 <body>
 
 
@@ -19,7 +24,7 @@
 
     <header>
         <a href="index.html" class="logo">
-            <img src="./images/logo.svg" alt="Logo du site" class="logo-img">
+            <img src="./logo.svg" alt="Logo du site" class="logo-img">
         </a>
         <ul class="navigation">
             <li><a href="index.html">Accueil</a></li>
@@ -46,142 +51,51 @@
         <h2 class="section-heading">Films</h2>
 
         <div class="controls controls-centered">
-  <select id="filterGenre" class="control-select">
-    <option value="">Genre (tous)</option>
-  </select>
+        <select id="filterGenre" class="control-select">
+            <option value="">Genre (tous)</option>
+        </select>
 
-  <select id="filterYear" class="control-select">
-    <option value="">Année (toutes)</option>
-  </select>
+        <select id="filterYear" class="control-select">
+            <option value="">Année (toutes)</option>
+        </select>
 
-  <select id="filterCountry" class="control-select">
-    <option value="">Pays (tous)</option>
-  </select>
+        <select id="filterCountry" class="control-select">
+            <option value="">Pays (tous)</option>
+        </select>
 
-  <select id="sortOrder" class="control-select">
-    <option value="az">Trier A → Z</option>
-    <option value="za">Trier Z → A</option>
-  </select>
+        <select id="sortOrder" class="control-select">
+            <option value="az">Trier A → Z</option>
+            <option value="za">Trier Z → A</option>
+        </select>
 
-  <button id="resetBtn" class="btn btn-ghost" type="button">Réinitialiser</button>
-</div>
+        <button id="resetBtn" class="btn btn-ghost" type="button">Réinitialiser</button>
+        </div>
 
 
         <div class="movies-container">
 
-            <div class="card-movies">
-                <div class="card-movies-img">
-                    <img src="./images/film-01.jpg" alt="">
-            </div>
-            <h3>Aquaman</h3>
-            <span>140 min | Action</span>
-        </div>
-
-        
-            <div class="card-movies">
-                <div class="card-movies-img">
-                    <img src="./images/film-02.jpg" alt="">
-            </div>
-            <h3>Black Panther</h3>
-            <span>140 min | Action</span>
-        </div>
-
-            <div class="card-movies">
-                <div class="card-movies-img">
-                    <img src="./images/film-03.jpg" alt="">
-            </div>
-            <h3>Avengers</h3>
-            <span>140 min | Action</span>
-        </div>
-
-            <div class="card-movies">
-                <div class="card-movies-img">
-                    <img src="./images/film-04.jpg" alt="">
-            </div>
-            <h3>Spider-Man</h3>
-            <span>140 min | Action</span>
-        </div>
-
-            <div class="card-movies">
-                <div class="card-movies-img">
-                    <img src="./images/film-05.jpg" alt="">
-            </div>
-            <h3>Shang-Chi</h3>
-            <span>140 min | Action</span>
-        </div>
-
-
-            <div class="card-movies">
-                <div class="card-movies-img">
-                    <img src="./images/film-06.jpg" alt="">
-            </div>
-            <h3>Thor</h3>
-            <span>140 min | Action</span>
-        </div>
-
-
-            <div class="card-movies">
-                <div class="card-movies-img">
-                    <img src="./images/film-07.jpg" alt="">
-            </div>
-            <h3>Quantumania</h3>
-            <span>140 min | Action</span>
-        </div>
-
-
-            <div class="card-movies">
-                <div class="card-movies-img">
-                    <img src="./images/film-08.jpg" alt="">
-            </div>
-            <h3>Black Widow</h3>
-            <span>140 min | Action</span>
-        </div>
-
-
-            <div class="card-movies">
-                <div class="card-movies-img">
-                    <img src="./images/film-09.jpg" alt="">
-            </div>
-            <h3>Harry Potter</h3>
-            <span>140 min | Action</span>
-        </div>
-
-
-            <div class="card-movies">
-                <div class="card-movies-img">
-                    <img src="./images/film-10.jpg" alt="">
-            </div>
-            <h3>Harry Potter</h3>
-            <span>140 min | Action</span>
-        </div>
-
+<div class="page-divider">
 
     </div>
-    </section>
-
+    </section}
 
     <!-- ################## -->
     <!-- Footer -->
     <!-- ################## -->
 
-<footer>
-        <a href="index.html" class="logo">
-            <img src="./images/logo.svg" alt="Logo du site" class="logo-img">
+    <footer class="site-footer">
+        <a href="index.html" class="footer-logo">
+            <img src="./logo.svg" alt="Logo du site" class="logo-img">
         </a>
-        
+        <p class="footer-credits">&copy; sykamIA - Tous droits réservés - 2026</p>
+                
     </footer>
-
-    <div class="copy">
-        <p>&copy; sykamIA - Tous droits réservés - 2026</p>
-    </div>
-
-
-
 
 
 <!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
+    <script src="catalog.js" defer></script>
 </body>
 </html>

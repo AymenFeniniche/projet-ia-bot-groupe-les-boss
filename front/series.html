@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body>
+
+<script src="app.js" defer></script>
+<script src="catalog.js" defer></script>
+
+</body>
 
 
     <!-- ################## -->
@@ -19,7 +23,7 @@
 
     <header>
         <a href="index.html" class="logo">
-            <img src="./images/logo.svg" alt="Logo du site" class="logo-img">
+            <img src="./logo.svg" alt="Logo du site" class="logo-img">
         </a>
         <ul class="navigation">
             <li><a href="index.html">Accueil</a></li>
@@ -41,47 +45,32 @@
     <!-- Séries -->
     <!-- ################## -->
 
-<section class="movies">
-    <h2 class="section-heading">Séries</h2>
-        <div class="controls controls-centered">
-  <select id="filterGenre" class="control-select">
-    <option value="">Genre (tous)</option>
-  </select>
+    <section class="movies">
+        <h2 class="section-heading">Séries</h2>
+            <div class="controls controls-centered">
+    <select id="filterGenre" class="control-select">
+        <option value="">Genre (tous)</option>
+    </select>
 
-  
-  <select id="filterYear" class="control-select">
-    <option value="">Année (toutes)</option>
-  </select>
+    
+    <select id="filterYear" class="control-select">
+        <option value="">Année (toutes)</option>
+    </select>
 
-  <select id="filterCountry" class="control-select">
-    <option value="">Pays (tous)</option>
-  </select>
+    <select id="filterCountry" class="control-select">
+        <option value="">Pays (tous)</option>
+    </select>
 
-  <select id="sortOrder" class="control-select">
-    <option value="az">Trier A → Z</option>
-    <option value="za">Trier Z → A</option>
-  </select>
+    <select id="sortOrder" class="control-select">
+        <option value="az">Trier A → Z</option>
+        <option value="za">Trier Z → A</option>
+    </select>
 
-  <button id="resetBtn" class="btn btn-ghost" type="button">Réinitialiser</button>
-</div>
+    <button id="resetBtn" class="btn btn-ghost" type="button">Réinitialiser</button>
+    </div>
 
     <div class="series-container">
-        <div class="card-movies">
-            <div class="card-movies-img">
-                <img src="./images/serie-01.jpg" alt="">
-            </div>
-            <h3>The Last of Us</h3>
-            <span>Série | Drame</span>
-        </div>
-
-        <div class="card-movies">
-            <div class="card-movies-img">
-                <img src="./images/serie-02.jpg" alt="">
-            </div>
-            <h3>Mercredi</h3>
-            <span>Série | Fantastique</span>
-        </div>
-    </div>
+        
 
 <div class="page-divider"></div>
 
@@ -92,24 +81,18 @@
     <!-- Footer -->
     <!-- ################## -->
 
-<footer>
-        <a href="index.html" class="logo">
-            <img src="./images/logo.svg" alt="Logo du site" class="logo-img">
+    <footer class="site-footer">
+        <a href="index.html" class="footer-logo">
+            <img src="./logo.svg" alt="Logo du site" class="logo-img">
         </a>
-        
+        <p class="footer-credits">&copy; sykamIA - Tous droits réservés - 2026</p>
+                
     </footer>
-
-    <div class="copy">
-        <p>&copy; sykamIA - Tous droits réservés - 2026</p>
-    </div>
-
-
-
 
 
 <!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
-    <script src="app.js"></script>
+    
 </body>
 </html>
