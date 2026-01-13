@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CineAgent — Chat</title>
+  <link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>💬 CineAgent</h1>
+    <p class="subtitle">Chatbot films & séries (MCP + scraping TMDB)</p>
+    <nav class="nav">
+      <a class="btn" href="/static/index.html">Accueil</a>
+      <a class="btn" href="/static/catalog.html">Catalogue</a>
+    </nav>
+  </header>
+
+  <main class="container chat-layout">
+    <section class="card chat-card">
+      <div id="messages" class="messages" aria-live="polite"></div>
+
+      <div class="composer">
+        <input id="msg" class="input" placeholder="Ex: Que regarder ce soir ?" autocomplete="off" />
+        <button id="send" class="btn primary" type="button">Envoyer</button>
+      </div>
+
+      <div class="hint">
+        Astuce : essaye “Que regarder ce soir ?” puis “détails 1”.
+      </div>
+    </section>
+
+    <aside class="card side-card">
+      <h2>🔧 Activité MCP</h2>
+      <div id="tools" class="tools"></div>
+
+      <h2 style="margin-top:14px;">🔗 Sources</h2>
+      <div id="sources" class="sources"></div>
+    </aside>
+  </main>
+
+  <script src="/static/chat.js"></script>
+</body>
+</html>

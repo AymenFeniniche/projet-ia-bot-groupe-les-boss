@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CineAgent</title>
+  <link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>🎬 CineAgent</h1>
+    <p class="subtitle">
+      Un agent conversationnel intelligent pour découvrir films & séries,
+      avec des données live via un serveur MCP (scraping TMDB).
+    </p>
+    <nav class="nav">
+      <a class="btn" href="/static/catalog.html">Voir le catalogue</a>
+      <a class="btn primary" href="/static/chat.html">Ouvrir le chatbot</a>
+    </nav>
+  </header>
+
+  <main class="container grid">
+    <section class="card">
+      <h2>Ce que fait CineAgent</h2>
+      <ul>
+        <li>Comprend des requêtes en langage naturel</li>
+        <li>Décide d’appeler des outils (tools) via MCP</li>
+        <li>Récupère des données live (scraping public)</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Démo conseillée</h2>
+      <ol>
+        <li>Ouvrir le chatbot</li>
+        <li>Écrire : “Que regarder ce soir ?”</li>
+        <li>Puis : “détails 1”</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>Projet pédagogique — données publiques, scraping à faible fréquence.</small>
+  </footer>
+</body>
+</html>
